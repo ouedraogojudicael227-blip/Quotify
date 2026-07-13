@@ -29,8 +29,8 @@ Que tu cherches de la motivation pour tes études, de la sagesse pour la vie, ou
 
 | Partie       | Technologie                  | Statut      |
 |--------------|------------------------------|-------------|
-| Frontend     | HTML5 + CSS3 + JavaScript    | À implémenter |
-| Design       | Tailwind CSS / Bootstrap     | À choisir   |
+| Frontend     | HTML5 + CSS3 + JavaScript    | oui |
+| Design       | Tailwind CSS / Bootstrap     | oui  |
 | Données      | JSON (citations)             | À créer     |
 | Hébergement  | Netlify / Vercel / GitHub Pages | Recommandé |
 
