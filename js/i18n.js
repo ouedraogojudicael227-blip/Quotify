@@ -30,7 +30,20 @@ window.I18N = {
     decouvre: "Découvrir",
     roue: "Roue",
     tourner: "Faire tourner",
-    tourne: "Ça tourne…"
+    tourne: "Ça tourne…",
+    carte: "Carte image",
+    histo: "Jours passés",
+    hier: "Hier",
+    ilYa: "Il y a",
+    jours: "jours",
+    notifs: "Notification du jour",
+    activerNotifs: "Activer",
+    notifOk: "Tu seras prévenu de la citation du jour sur cet appareil.",
+    notifRefuse: "Autorisation refusée.",
+    notifTitre: "Citation du jour",
+    toutesLangues: "Toutes langues",
+    frSeul: "Français",
+    enSeul: "English"
   },
   en: {
     brand: "Quotify",
@@ -63,6 +76,19 @@ window.I18N = {
     decouvre: "Discover",
     roue: "Wheel",
     tourner: "Spin",
-    tourne: "Spinning…"
+    tourne: "Spinning…",
+    carte: "Image card",
+    histo: "Past days",
+    hier: "Yesterday",
+    ilYa: " ",
+    jours: "days ago",
+    notifs: "Daily notification",
+    activerNotifs: "Turn on",
+    notifOk: "This device can show the quote of the day.",
+    notifRefuse: "Permission denied.",
+    notifTitre: "Quote of the day",
+    toutesLangues: "All languages",
+    frSeul: "French",
+    enSeul: "English"
   }
 };
