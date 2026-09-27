@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Roue — Quotify</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="manifest" href="manifest.json" />
+</head>
+<body>
+  <div id="header"></div>
+  <main class="wrap">
+    <h1 id="title" style="margin-top:24px"></h1>
+    <div class="wheel-wrap">
+      <div class="wheel-box">
+        <div class="wheel-pointer"></div>
+        <div class="wheel" id="wheel"></div>
+      </div>
+      <button class="btn" type="button" id="spin"></button>
+    </div>
+    <div id="result"></div>
+  </main>
+  <div id="footer"></div>
+  <script src="js/i18n.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    document.getElementById("header").outerHTML = headerHTML("roue");
+    document.getElementById("footer").outerHTML = footerHTML();
+    const t = (k) => Quotify.t(k);
+    document.getElementById("title").textContent = t("roue");
+    document.getElementById("spin").textContent = t("tourner");
+
+    const themes = Object.keys(QUOTIFY_DATA.themes);
+    const slices = themes.map((th) => {
+      const pool = QUOTIFY_DATA.quotes.filter((q) => q.theme === th);
+      return pool[Math.floor(Math.random() * pool.length)];
+    }).filter(Boolean);
+    const n = slices.length;
+    const seg = 360 / n;
+    const colors = slices.map((q) => Quotify.themeColor(q.theme));
+    const wheel = document.getElementById("wheel");
+    wheel.style.background = "conic-gradient(" + slices.map((_, i) =>
+      colors[i] + " " + (i * seg) + "deg " + ((i + 1) * seg) + "deg"
+    ).join(", ") + ")";
+
+    let rot = 0;
+    let busy = false;
+    document.getElementById("spin").onclick = () => {
+      if (busy) return;
+      busy = true;
+      document.getElementById("spin").textContent = t("tourne");
+      const win = Math.floor(Math.random() * n);
+      const mid = win * seg + seg / 2;
+      rot += 1800 - (mid + (rot % 360));
+      wheel.style.transform = "rotate(" + rot + "deg)";
+      setTimeout(() => {
+        document.getElementById("result").innerHTML = quoteCard(slices[win]);
+        document.getElementById("spin").textContent = t("tourner");
+        busy = false;
+      }, 3200);
+    };
+  </script>
+</body>
+</html>

@@ -1,9 +1,10 @@
-const CACHE = "quotify-v2";
+const CACHE = "quotify-v3";
 const FILES = [
   "./",
   "index.html",
   "explorer.html",
   "favoris.html",
+  "roue.html",
   "css/style.css",
   "js/app.js",
   "js/data.js",

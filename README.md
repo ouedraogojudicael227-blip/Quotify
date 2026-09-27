@@ -12,23 +12,24 @@ cd Quotify
 python3 -m http.server 8080
 ```
 
-Ouvre `http://localhost:8080` ou `http://localhost:8080/index.html?shell=app`.
+Ouvre `http://localhost:8080` ou `index.html?shell=app`.
 
 ## Fonctions
 
-- 60 citations, citation du jour selon la langue
-- Bouton « une autre »
-- Compte à rebours jusqu'à minuit
-- Explorer par thème et recherche instantanée
-- Favoris sans recharger la page
-- Copier / partager
-- Français et anglais
-- Mode clair / sombre
-- Hors-ligne après la première ouverture
+- 60 citations
+- Citation du jour selon la langue
+- Roue au hasard
+- Explorer, favoris, copier / partager
+- FR / EN, clair / sombre, hors-ligne
+
+## Branches
+
+- `main` protégée : pas de push direct
+- `develop` pour le travail en cours
 
 ## Contribuer
 
-Lis [CONTRIBUTING.md](CONTRIBUTING.md). Ajoute des citations dans `js/data.js`.
+Lis [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Licence
 
