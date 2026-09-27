@@ -16,6 +16,7 @@
       <button class="btn" type="submit" id="btn"></button>
     </form>
     <div class="chips" id="chips"></div>
+    <div class="chips" id="langs"></div>
     <p class="count" id="count"></p>
     <div class="grid" id="list"></div>
   </main>
@@ -31,10 +32,12 @@
     document.getElementById("q").placeholder = t("searchPh");
     document.getElementById("btn").textContent = t("chercher");
     let theme = "tous";
+    let langF = "tous";
     function render() {
       const s = (document.getElementById("q").value || "").toLowerCase();
       const items = QUOTIFY_DATA.quotes.filter((q) => {
         if (theme !== "tous" && q.theme !== theme) return false;
+        if (langF !== "tous" && q.lang !== langF) return false;
         if (!s) return true;
         return (q.text + " " + q.author + " " + Quotify.themeLabel(q.theme)).toLowerCase().includes(s);
       });
@@ -52,7 +55,18 @@
       const b = e.target.closest("button");
       if (!b) return;
       theme = b.dataset.th;
-      document.querySelectorAll(".chip").forEach((c) => c.classList.toggle("on", c === b));
+      document.querySelectorAll("#chips .chip").forEach((c) => c.classList.toggle("on", c === b));
+      render();
+    };
+    document.getElementById("langs").innerHTML =
+      `<button class="chip on" type="button" data-lg="tous">${t("toutesLangues")}</button>` +
+      `<button class="chip" type="button" data-lg="fr">${t("frSeul")}</button>` +
+      `<button class="chip" type="button" data-lg="en">${t("enSeul")}</button>`;
+    document.getElementById("langs").onclick = (e) => {
+      const b = e.target.closest("button");
+      if (!b) return;
+      langF = b.dataset.lg;
+      document.querySelectorAll("#langs .chip").forEach((c) => c.classList.toggle("on", c === b));
       render();
     };
     document.getElementById("q").addEventListener("input", render);

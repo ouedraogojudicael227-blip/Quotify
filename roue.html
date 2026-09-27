@@ -30,7 +30,6 @@
     const t = (k) => Quotify.t(k);
     document.getElementById("title").textContent = t("roue");
     document.getElementById("spin").textContent = t("tourner");
-
     const themes = Object.keys(QUOTIFY_DATA.themes);
     const slices = themes.map((th) => {
       const pool = QUOTIFY_DATA.quotes.filter((q) => q.theme === th);
@@ -43,7 +42,10 @@
     wheel.style.background = "conic-gradient(" + slices.map((_, i) =>
       colors[i] + " " + (i * seg) + "deg " + ((i + 1) * seg) + "deg"
     ).join(", ") + ")";
-
+    wheel.innerHTML = slices.map((q, i) => {
+      const mid = i * seg + seg / 2;
+      return `<span class="wheel-label" style="transform:rotate(${mid}deg) translate(0,-108px)">${Quotify.themeLabel(q.theme)}</span>`;
+    }).join("");
     let rot = 0;
     let busy = false;
     document.getElementById("spin").onclick = () => {
@@ -56,6 +58,7 @@
       wheel.style.transform = "rotate(" + rot + "deg)";
       setTimeout(() => {
         document.getElementById("result").innerHTML = quoteCard(slices[win]);
+        document.getElementById("result").classList.add("pop");
         document.getElementById("spin").textContent = t("tourner");
         busy = false;
       }, 3200);
