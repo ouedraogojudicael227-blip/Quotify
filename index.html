@@ -16,12 +16,16 @@
       <h1 id="title"></h1>
       <p id="tag"></p>
       <p class="row">
-        <button class="btn" id="installBtn"></button>
-        <button class="btn ghost" onclick="Quotify.isApp() ? (localStorage.setItem('quotify-shell','web'), location.href='index.html') : (localStorage.setItem('quotify-shell','app'), location.href='index.html?shell=app')" id="shellBtn"></button>
+        <button class="btn" id="installBtn" type="button"></button>
+        <button class="btn ghost" type="button" id="shellBtn"></button>
       </p>
     </section>
     <p class="note" id="dailyLabel"></p>
     <div id="daily"></div>
+    <p class="row">
+      <button class="btn" type="button" id="randBtn"></button>
+    </p>
+    <div id="rand"></div>
   </main>
   <div id="footer"></div>
   <script src="js/i18n.js"></script>
@@ -35,11 +39,27 @@
     document.getElementById("tag").textContent = t("tagline");
     document.getElementById("installBtn").textContent = t("installer");
     document.getElementById("installBtn").onclick = () => Quotify.install();
-    document.getElementById("shellBtn").textContent = Quotify.isApp() ? "Site" : "App";
-    document.getElementById("dailyLabel").textContent = t("citationDuJour") + " · " + t("prochaine");
+    const app = Quotify.isApp();
+    document.getElementById("shellBtn").textContent = app ? "Site" : "App";
+    document.getElementById("shellBtn").onclick = () => {
+      localStorage.setItem("quotify-shell", app ? "web" : "app");
+      location.href = app ? "index.html" : "index.html?shell=app";
+    };
     const q = Quotify.quoteOfDay();
-    document.getElementById("daily").innerHTML = quoteCard(q,
-      `<button class="btn" onclick="location.href='explorer.html'">${t("explorer")}</button>`);
+    function tick() {
+      document.getElementById("dailyLabel").textContent =
+        t("citationDuJour") + " · " + t("prochaine") + " (" + Quotify.untilMidnight() + ")";
+    }
+    tick();
+    setInterval(tick, 30000);
+    document.getElementById("daily").innerHTML = quoteCard(q);
+    document.getElementById("randBtn").textContent = t("aleatoire");
+    let current = q;
+    document.getElementById("randBtn").onclick = () => {
+      current = Quotify.pick(current.id);
+      document.getElementById("rand").innerHTML = quoteCard(current);
+      document.getElementById("rand").scrollIntoView({ behavior: "smooth", block: "center" });
+    };
   </script>
 </body>
 </html>
