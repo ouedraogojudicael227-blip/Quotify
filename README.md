@@ -4,21 +4,25 @@ Une citation inspirante, chaque jour.
 
 Site web + application (PWA). Open source. Pas de compte.
 
+## En ligne
+
+https://ouedraogojudicael227-blip.github.io/Quotify/
+
 ## Captures
 
-Accueil (citation du jour, historique) :
+Accueil :
 
-![Accueil Quotify](img/screens/accueil.svg)
+![Accueil](img/screens/accueil.svg)
 
-Explorer (thèmes et langues) :
+Explorer :
 
-![Explorer Quotify](img/screens/explorer.svg)
+![Explorer](img/screens/explorer.svg)
 
 Roue :
 
-![Roue Quotify](img/screens/roue.svg)
+![Roue](img/screens/roue.svg)
 
-## Lancer en local
+## Local
 
 ```bash
 git clone https://github.com/ouedraogojudicael227-blip/Quotify.git
@@ -26,27 +30,19 @@ cd Quotify
 python3 -m http.server 8080
 ```
 
-Ouvre `http://localhost:8080` ou `index.html?shell=app`.
-
 ## Fonctions
 
-- 60 citations, thème Études, proverbes d’Afrique
-- Citation du jour selon la langue + 7 jours passés
-- Roue avec le nom des thèmes
-- Carte image à télécharger
-- Explorer : thème + filtre FR / EN
-- Notification optionnelle de la citation du jour
-- Favoris, copier, partager
-- Clair / sombre, hors-ligne
-
-## Branches
-
-- `main` protégée
-- `develop` pour le travail
+- Citation du jour et de la semaine
+- Packs Afrique / Études / Travail
+- WhatsApp, carte image, favoris
+- FR, EN, mooré, dioula, fulfuldé
+- Roue, historique, notifications
+- Proposer une citation via une issue GitHub
 
 ## Contribuer
 
-Lis [CONTRIBUTING.md](CONTRIBUTING.md). Ajoute des citations dans `js/data.js`.
+Lis [CONTRIBUTING.md](CONTRIBUTING.md).
+Ouvre une issue « Proposer une citation ».
 
 ## Licence
 
