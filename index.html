@@ -18,6 +18,7 @@
       <p class="row">
         <button class="btn" id="installBtn" type="button"></button>
         <button class="btn ghost" type="button" id="shellBtn"></button>
+        <button class="btn ghost" type="button" id="notifBtn"></button>
       </p>
     </section>
     <p class="note" id="dailyLabel"></p>
@@ -26,6 +27,8 @@
       <button class="btn" type="button" id="randBtn"></button>
     </p>
     <div id="rand"></div>
+    <h2 id="histoTitle" style="margin-top:28px"></h2>
+    <div id="histo"></div>
   </main>
   <div id="footer"></div>
   <script src="js/i18n.js"></script>
@@ -41,6 +44,8 @@
     document.getElementById("installBtn").onclick = () => Quotify.install();
     const app = Quotify.isApp();
     document.getElementById("shellBtn").textContent = app ? "Site" : "App";
+    document.getElementById("notifBtn").textContent = t("activerNotifs") + " · " + t("notifs");
+    document.getElementById("notifBtn").onclick = () => Quotify.enableNotifs();
     document.getElementById("shellBtn").onclick = () => {
       localStorage.setItem("quotify-shell", app ? "web" : "app");
       location.href = app ? "index.html" : "index.html?shell=app";
@@ -55,6 +60,11 @@
     document.getElementById("daily").innerHTML = quoteCard(q);
     document.getElementById("randBtn").textContent = t("aleatoire");
     let current = q;
+    document.getElementById("histoTitle").textContent = t("histo");
+    document.getElementById("histo").innerHTML = [1,2,3].map((d) => {
+      const label = d === 1 ? t("hier") : (t("ilYa") + d + " " + t("jours")).trim();
+      return `<p class="note">${label}</p>` + quoteCard(Quotify.quoteAtOffset(d));
+    }).join("");
     document.getElementById("randBtn").onclick = () => {
       current = Quotify.pick(current.id);
       document.getElementById("rand").innerHTML = quoteCard(current);
