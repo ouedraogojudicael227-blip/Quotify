@@ -27,7 +27,10 @@ window.I18N = {
     retiree: "Retirée des favoris",
     resultats: "citations",
     aujourdHuiNote: "Choix fixe jusqu'à minuit, selon ta langue.",
-    decouvre: "Découvrir"
+    decouvre: "Découvrir",
+    roue: "Roue",
+    tourner: "Faire tourner",
+    tourne: "Ça tourne…"
   },
   en: {
     brand: "Quotify",
@@ -57,6 +60,9 @@ window.I18N = {
     retiree: "Removed from favorites",
     resultats: "quotes",
     aujourdHuiNote: "Fixed until midnight, in your language.",
-    decouvre: "Discover"
+    decouvre: "Discover",
+    roue: "Wheel",
+    tourner: "Spin",
+    tourne: "Spinning…"
   }
 };
