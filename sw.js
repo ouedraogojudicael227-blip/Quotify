@@ -1,4 +1,4 @@
-const CACHE = "quotify-v1";
+const CACHE = "quotify-v2";
 const FILES = [
   "./",
   "index.html",
