@@ -93,6 +93,67 @@ window.Quotify = {
     const m = Math.floor((diff % 3600000) / 60000);
     return h + "h" + String(m).padStart(2, "0");
   },
+  quoteAtOffset(daysAgo) {
+    const list = this.pool();
+    const idx = this.dayIndex() - daysAgo;
+    const i = ((idx % list.length) + list.length) % list.length;
+    return list[i];
+  },
+  wrapCanvas(ctx, text, x, y, max, lineH) {
+    const words = text.split(" ");
+    let line = "";
+    const lines = [];
+    words.forEach((w) => {
+      const test = line ? line + " " + w : w;
+      if (ctx.measureText(test).width > max) { lines.push(line); line = w; }
+      else line = test;
+    });
+    if (line) lines.push(line);
+    lines.forEach((ln, i) => ctx.fillText(ln, x, y + i * lineH));
+    return lines.length;
+  },
+  downloadCard(q) {
+    const c = document.createElement("canvas");
+    c.width = 1080; c.height = 1350;
+    const ctx = c.getContext("2d");
+    ctx.fillStyle = "#f6f1e8"; ctx.fillRect(0, 0, 1080, 1350);
+    ctx.fillStyle = this.themeColor(q.theme);
+    ctx.fillRect(0, 0, 18, 1350);
+    ctx.fillStyle = "#c9842a";
+    ctx.font = "700 36px sans-serif";
+    ctx.fillText("Quotify", 80, 120);
+    ctx.fillStyle = "#1c1914";
+    ctx.font = "600 48px serif";
+    this.wrapCanvas(ctx, "« " + q.text + " »", 80, 280, 920, 64);
+    ctx.fillStyle = "#6b6458";
+    ctx.font = "700 32px sans-serif";
+    ctx.fillText("— " + q.author, 80, 1180);
+    ctx.fillStyle = "#c9842a";
+    ctx.font = "600 24px sans-serif";
+    ctx.fillText(this.themeLabel(q.theme), 80, 1240);
+    const a = document.createElement("a");
+    a.href = c.toDataURL("image/png");
+    a.download = "quotify-" + q.id + ".png";
+    a.click();
+    this.toast(this.t("carte"));
+  },
+  notifsOn() { return localStorage.getItem("quotify-notif") === "1"; },
+  async enableNotifs() {
+    if (!("Notification" in window)) { this.toast(this.t("notifRefuse")); return; }
+    const perm = await Notification.requestPermission();
+    if (perm !== "granted") { this.toast(this.t("notifRefuse")); return; }
+    localStorage.setItem("quotify-notif", "1");
+    this.toast(this.t("notifOk"));
+    this.maybeNotify();
+  },
+  maybeNotify() {
+    if (!this.notifsOn() || Notification.permission !== "granted") return;
+    const day = new Date().toISOString().slice(0, 10);
+    if (localStorage.getItem("quotify-notif-day") === day) return;
+    const q = this.quoteOfDay();
+    new Notification(this.t("notifTitre"), { body: q.text + " — " + q.author });
+    localStorage.setItem("quotify-notif-day", day);
+  },
   install() {
     alert(this.lang() === "en"
       ? "On Android Chrome: menu then Add to Home screen. On iPhone: Share then Add to Home Screen."
@@ -114,6 +175,7 @@ function headerHTML(active) {
       <a href="index.html" class="${active === "home" ? "active" : ""}">${t("aujourdhui")}</a>
       <a href="explorer.html" class="${active === "explorer" ? "active" : ""}">${t("explorer")}</a>
       <a href="roue.html" class="${active === "roue" ? "active" : ""}">${t("roue")}</a>
+      <a href="historique.html" class="${active === "histo" ? "active" : ""}">${t("histo")}</a>
       <a href="favoris.html" class="${active === "favoris" ? "active" : ""}">${t("favoris")}</a>
       <button class="icon-btn" type="button" onclick="Quotify.toggleTheme()">${Quotify.theme() === "dark" ? t("clair") : t("sombre")}</button>
       <select onchange="Quotify.setLang(this.value)" aria-label="${t("langue")}">
@@ -132,6 +194,7 @@ function footerHTML() {
     <a href="index.html" class="${page === "index.html" || page === "" ? "active" : ""}">${t("aujourdhui")}</a>
     <a href="explorer.html" class="${page === "explorer.html" ? "active" : ""}">${t("explorer")}</a>
     <a href="roue.html" class="${page === "roue.html" ? "active" : ""}">${t("roue")}</a>
+    <a href="historique.html" class="${page === "historique.html" ? "active" : ""}">${t("histo")}</a>
     <a href="favoris.html" class="${page === "favoris.html" ? "active" : ""}">${t("favoris")}</a>
   </nav>`;
 }
@@ -149,6 +212,7 @@ function quoteCard(q, extra) {
       <button class="btn ghost ${Quotify.isFav(q.id) ? "on" : ""}" type="button" data-fav="${q.id}" onclick="Quotify.toggleFav(${q.id})">${heart} ${t("favoris")}</button>
       <button class="btn ghost" type="button" onclick='Quotify.copy(${JSON.stringify(text)}, this)'>${t("copier")}</button>
       <button class="btn ghost" type="button" onclick='Quotify.share(${JSON.stringify(q)})'>${t("partager")}</button>
+      <button class="btn ghost" type="button" onclick='Quotify.downloadCard(${JSON.stringify(q)})'>${t("carte")}</button>
       ${extra || ""}
     </div>
   </article>`;
@@ -157,4 +221,4 @@ function quoteCard(q, extra) {
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker.register("sw.js").catch(() => {});
 }
-document.addEventListener("DOMContentLoaded", applyChrome);
+document.addEventListener("DOMContentLoaded", () => { applyChrome(); Quotify.maybeNotify(); });
