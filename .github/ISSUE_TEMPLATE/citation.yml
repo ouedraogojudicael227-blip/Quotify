@@ -1,0 +1,41 @@
+name: Proposer une citation
+description: Ajouter une citation au projet
+title: "[citation] "
+labels: ["citation"]
+body:
+  - type: textarea
+    id: texte
+    attributes:
+      label: Texte de la citation
+    validations:
+      required: true
+  - type: input
+    id: auteur
+    attributes:
+      label: Auteur
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Source
+      description: Livre, proverbe, discours…
+  - type: dropdown
+    id: pack
+    attributes:
+      label: Pack
+      options:
+        - Afrique
+        - Études
+        - Travail
+        - Autre
+  - type: dropdown
+    id: langue
+    attributes:
+      label: Langue
+      options:
+        - Français
+        - English
+        - Mooré
+        - Dioula
+        - Fulfuldé

@@ -49,14 +49,28 @@ window.Quotify = {
     const start = new Date(now.getFullYear(), 0, 0);
     return Math.floor((now - start) / 86400000);
   },
+  weekIndex() {
+    const now = new Date();
+    const start = new Date(now.getFullYear(), 0, 1);
+    return Math.floor((now - start) / 604800000);
+  },
   pool(lang) {
     const all = window.QUOTIFY_DATA.quotes;
-    const same = all.filter((q) => q.lang === (lang || this.lang()));
-    return same.length ? same : all;
+    const l = lang || this.lang();
+    if (l === "en") {
+      const same = all.filter((q) => q.lang === "en");
+      return same.length ? same : all;
+    }
+    const fr = all.filter((q) => q.lang === "fr");
+    return fr.length ? fr : all;
   },
   quoteOfDay() {
     const list = this.pool();
     return list[this.dayIndex() % list.length];
+  },
+  quoteOfWeek() {
+    const list = this.pool();
+    return list[(this.weekIndex() + 11) % list.length];
   },
   pick(excludeId, lang) {
     const list = this.pool(lang).filter((q) => q.id !== excludeId);
@@ -69,6 +83,14 @@ window.Quotify = {
     const th = window.QUOTIFY_DATA.themes[id];
     return th ? th[this.lang()] || th.fr : id;
   },
+  packOf(q) {
+    if (q.pack) return q.pack;
+    if (q.theme === "etudes") return "etudes";
+    if (q.theme === "succes") return "travail";
+    const a = (q.author || "").toLowerCase();
+    if (a.includes("africain") || a.includes("mandela")) return "afrique";
+    return "";
+  },
   copy(text, btn) {
     navigator.clipboard.writeText(text).then(() => {
       if (btn) {
@@ -78,6 +100,10 @@ window.Quotify = {
       }
       this.toast(this.t("copie"));
     });
+  },
+  whatsapp(q) {
+    const text = `"${q.text}" — ${q.author}`;
+    location.href = "https://wa.me/?text=" + encodeURIComponent(text);
   },
   share(q) {
     const text = `"${q.text}" — ${q.author}`;
@@ -181,6 +207,9 @@ function headerHTML(active) {
       <select onchange="Quotify.setLang(this.value)" aria-label="${t("langue")}">
         <option value="fr" ${Quotify.lang() === "fr" ? "selected" : ""}>FR</option>
         <option value="en" ${Quotify.lang() === "en" ? "selected" : ""}>EN</option>
+        <option value="mos" ${Quotify.lang() === "mos" ? "selected" : ""}>MO</option>
+        <option value="dyu" ${Quotify.lang() === "dyu" ? "selected" : ""}>DY</option>
+        <option value="ff" ${Quotify.lang() === "ff" ? "selected" : ""}>FF</option>
       </select>
     </nav>
   </div></header>`;
@@ -204,14 +233,17 @@ function quoteCard(q, extra) {
   const heart = Quotify.isFav(q.id) ? "♥" : "♡";
   const text = `"${q.text}" — ${q.author}`;
   const color = Quotify.themeColor(q.theme);
+  const src = q.source ? `<p class="note">${t("source")} : ${q.source}</p>` : "";
   return `<article class="card quote-card" id="q-${q.id}" style="--q:${color}">
     <div class="tag">${Quotify.themeLabel(q.theme)}</div>
     <blockquote>${q.text}</blockquote>
     <cite>— ${q.author}</cite>
+    ${src}
     <div class="row">
       <button class="btn ghost ${Quotify.isFav(q.id) ? "on" : ""}" type="button" data-fav="${q.id}" onclick="Quotify.toggleFav(${q.id})">${heart} ${t("favoris")}</button>
       <button class="btn ghost" type="button" onclick='Quotify.copy(${JSON.stringify(text)}, this)'>${t("copier")}</button>
       <button class="btn ghost" type="button" onclick='Quotify.share(${JSON.stringify(q)})'>${t("partager")}</button>
+      <button class="btn ghost" type="button" onclick='Quotify.whatsapp(${JSON.stringify(q)})'>${t("whatsapp")}</button>
       <button class="btn ghost" type="button" onclick='Quotify.downloadCard(${JSON.stringify(q)})'>${t("carte")}</button>
       ${extra || ""}
     </div>

@@ -23,6 +23,8 @@
     </section>
     <p class="note" id="dailyLabel"></p>
     <div id="daily"></div>
+    <p class="note" id="weekLabel"></p>
+    <div id="week"></div>
     <p class="row">
       <button class="btn" type="button" id="randBtn"></button>
     </p>
@@ -58,6 +60,8 @@
     tick();
     setInterval(tick, 30000);
     document.getElementById("daily").innerHTML = quoteCard(q);
+    document.getElementById("weekLabel").textContent = t("semaine");
+    document.getElementById("week").innerHTML = quoteCard(Quotify.quoteOfWeek());
     document.getElementById("randBtn").textContent = t("aleatoire");
     let current = q;
     document.getElementById("histoTitle").textContent = t("histo");

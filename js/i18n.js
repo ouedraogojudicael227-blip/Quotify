@@ -43,7 +43,14 @@ window.I18N = {
     notifTitre: "Citation du jour",
     toutesLangues: "Toutes langues",
     frSeul: "Français",
-    enSeul: "English"
+    enSeul: "English",
+    whatsapp: "WhatsApp",
+    packs: "Packs",
+    packAfrique: "Afrique",
+    packEtudes: "Études",
+    packTravail: "Travail",
+    semaine: "Citation de la semaine",
+    source: "Source"
   },
   en: {
     brand: "Quotify",
@@ -89,6 +96,16 @@ window.I18N = {
     notifTitre: "Quote of the day",
     toutesLangues: "All languages",
     frSeul: "French",
-    enSeul: "English"
-  }
+    enSeul: "English",
+    whatsapp: "WhatsApp",
+    packs: "Packs",
+    packAfrique: "Africa",
+    packEtudes: "Study",
+    packTravail: "Work",
+    semaine: "Quote of the week",
+    source: "Source"
+  },
+  mos: { tagline: "Sẽ n yaa sõma dũn ye.", aujourdhui: "Dũn", explorer: "Gese", favoris: "Ninsã", aleatoire: "A to", copier: "Kɔɔse", partager: "Tãsẽ", citationDuJour: "Sẽ n yaa dũn ye", semaine: "Sẽ n yaa dabsẽ ye", roue: "Roodo", histo: "Dabsẽ sẽ n kẹnga", whatsapp: "WhatsApp" },
+  dyu: { tagline: "Kuma ɲuman, don kɔnɔ.", aujourdhui: "Bi", explorer: "Ɛini", favoris: "Kanu", aleatoire: "Wɛrɛ", copier: "Kopi", partager: "Tile", citationDuJour: "Don in kuma", semaine: "Dɔgɔkun kuma", roue: "Rili", histo: "Don tɛmɛnenw", whatsapp: "WhatsApp" },
+  ff: { tagline: "Konde laaɓnde, ñalawma kala.", aujourdhui: "Hannde", explorer: "Yiytu", favoris: "Yiɗaaɗe", aleatoire: "Woɗnde", copier: "Natto", partager: "Lollin", citationDuJour: "Konde ñalawma", semaine: "Konde yontere", roue: "Yiilirde", histo: "Ñalɗi ɓennuɗi", whatsapp: "WhatsApp" }
 };
