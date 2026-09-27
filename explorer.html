@@ -16,6 +16,7 @@
       <button class="btn" type="submit" id="btn"></button>
     </form>
     <div class="chips" id="chips"></div>
+    <p class="count" id="count"></p>
     <div class="grid" id="list"></div>
   </main>
   <div id="footer"></div>
@@ -37,14 +38,15 @@
         if (!s) return true;
         return (q.text + " " + q.author + " " + Quotify.themeLabel(q.theme)).toLowerCase().includes(s);
       });
+      document.getElementById("count").textContent = items.length + " " + t("resultats");
       document.getElementById("list").innerHTML = items.length
         ? items.map((q) => quoteCard(q)).join("")
         : `<p class="note">${t("aucun")}</p>`;
     }
     document.getElementById("chips").innerHTML =
-      `<button class="chip on" data-th="tous">${t("tous")}</button>` +
+      `<button class="chip on" type="button" data-th="tous">${t("tous")}</button>` +
       Object.keys(QUOTIFY_DATA.themes).map((id) =>
-        `<button class="chip" data-th="${id}">${Quotify.themeLabel(id)}</button>`
+        `<button class="chip" type="button" data-th="${id}">${Quotify.themeLabel(id)}</button>`
       ).join("");
     document.getElementById("chips").onclick = (e) => {
       const b = e.target.closest("button");
@@ -53,6 +55,7 @@
       document.querySelectorAll(".chip").forEach((c) => c.classList.toggle("on", c === b));
       render();
     };
+    document.getElementById("q").addEventListener("input", render);
     render();
   </script>
 </body>
