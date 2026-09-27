@@ -5,6 +5,7 @@ window.QUOTIFY_DATA = {
     succes: { fr: "Travail", en: "Work", color: "#2f6b9a" },
     vie: { fr: "Vie", en: "Life", color: "#6b4f9a" },
     amitie: { fr: "Amitié", en: "Friendship", color: "#b85c38" },
+    etudes: { fr: "Études", en: "Study", color: "#3a6ea5" },
     humour: { fr: "Humour", en: "Humor", color: "#7a8b2e" }
   },
   quotes: [
@@ -13,10 +14,24 @@ window.QUOTIFY_DATA = {
     { id: 3, text: "Il n'y a qu'une façon d'échouer, c'est d'abandonner avant d'avoir réussi.", author: "Georges Clemenceau", theme: "motivation", lang: "fr" },
     { id: 4, text: "Fall seven times, stand up eight.", author: "Japanese proverb", theme: "motivation", lang: "en" },
     { id: 5, text: "La discipline est le pont entre les objectifs et les résultats.", author: "Jim Rohn", theme: "motivation", lang: "fr" },
+    { id: 36, text: "Be the change you wish to see in the world.", author: "Mahatma Gandhi", theme: "vie", lang: "en" },
+    { id: 37, text: "Si tu veux aller vite, va seul. Si tu veux aller loin, allez ensemble.", author: "Proverbe africain", theme: "amitie", lang: "fr" },
+    { id: 38, text: "Un seul brin de paille ne tisse pas un panier.", author: "Proverbe africain", theme: "amitie", lang: "fr" },
+    { id: 39, text: "La pluie ne tombe pas sur un seul toit.", author: "Proverbe africain", theme: "sagesse", lang: "fr" },
+    { id: 40, text: "Quand les racines sont profondes, il n'y a pas lieu de craindre le vent.", author: "Proverbe africain", theme: "motivation", lang: "fr" },
+    { id: 41, text: "L'éducation est l'arme la plus puissante qu'on puisse utiliser pour changer le monde.", author: "Nelson Mandela", theme: "etudes", lang: "fr" },
+    { id: 42, text: "Education is the most powerful weapon which you can use to change the world.", author: "Nelson Mandela", theme: "etudes", lang: "en" },
+    { id: 43, text: "Apprendre sans réfléchir est vain. Réfléchir sans apprendre est dangereux.", author: "Confucius", theme: "etudes", lang: "fr" },
+    { id: 46, text: "Un livre ouvert est un cerveau qui parle.", author: "Proverbe", theme: "etudes", lang: "fr" },
+    { id: 51, text: "Celui qui déplace une montagne commence par enlever les petites pierres.", author: "Confucius", theme: "succes", lang: "fr" },
+    { id: 52, text: "It always seems impossible until it is done.", author: "Nelson Mandela", theme: "motivation", lang: "en" },
+    { id: 53, text: "Cela paraît toujours impossible, jusqu'à ce que ce soit fait.", author: "Nelson Mandela", theme: "motivation", lang: "fr" },
+    { id: 57, text: "Le savoir est la seule richesse qu'on ne peut pas voler.", author: "Proverbe", theme: "etudes", lang: "fr" },
+    { id: 60, text: "Un voyage de mille lieues commence toujours par un premier pas.", author: "Lao Tseu", theme: "motivation", lang: "fr" },
     { id: 6, text: "N'attends pas d'être heureux pour sourire, souris pour être heureux.", author: "Édouard Pailleron", theme: "motivation", lang: "fr" },
     { id: 7, text: "Le meilleur moyen de prédire l'avenir, c'est de le créer.", author: "Peter Drucker", theme: "motivation", lang: "fr" },
     { id: 8, text: "On ne voit bien qu'avec le cœur. L'essentiel est invisible pour les yeux.", author: "Antoine de Saint-Exupéry", theme: "sagesse", lang: "fr" },
-    { id: 9, text: "Connais-toi toi-même et tu connaîtras l'univers et les dieux.", author: "Socrate", theme: "sagesse", lang: "fr" },
+    { id: 9, text: "Connais-toi toi-même.", author: "Socrate", theme: "sagesse", lang: "fr" },
     { id: 10, text: "La vraie sagesse est de connaître l'étendue de son ignorance.", author: "Confucius", theme: "sagesse", lang: "fr" },
     { id: 11, text: "Ce que nous savons est une goutte d'eau, ce que nous ignorons est un océan.", author: "Isaac Newton", theme: "sagesse", lang: "fr" },
     { id: 12, text: "The unexamined life is not worth living.", author: "Socrates", theme: "sagesse", lang: "en" },
@@ -41,8 +56,7 @@ window.QUOTIFY_DATA = {
     { id: 31, text: "Le travail, c'est la santé. Rien faire, c'est la conserver.", author: "Henri Salvador", theme: "humour", lang: "fr" },
     { id: 32, text: "I'm not lazy, I'm on energy-saving mode.", author: "Anonymous", theme: "humour", lang: "en" },
     { id: 33, text: "Il vaut mieux rire de ses erreurs que d'en pleurer.", author: "Anonyme", theme: "humour", lang: "fr" },
-    { id: 34, text: "Qui trop se presse, arrive le premier à se tromper.", author: "Anonyme", theme: "humour", lang: "fr" },
-    { id: 35, text: "Commence par faire le nécessaire, puis le possible, et tu atteindras l'impossible.", author: "François d'Assise", theme: "motivation", lang: "fr" },
-    { id: 36, text: "Be the change you wish to see in the world.", author: "Mahatma Gandhi", theme: "vie", lang: "en" }
+    { id: 34, text: "Qui trop se presse arrive le premier à se tromper.", author: "Anonyme", theme: "humour", lang: "fr" },
+    { id: 35, text: "Commence par faire le nécessaire, puis le possible, et tu atteindras l'impossible.", author: "François d'Assise", theme: "motivation", lang: "fr" }
   ]
 };
