@@ -106,12 +106,6 @@ html[data-shell="app"] .web-nav { display: none; }
   .web-nav { width: 100%; }
 }
 .quote-card { position: relative; overflow: hidden; border-left: 6px solid var(--q, var(--accent)); }
-.quote-card::before {
-  content: "\201C";
-  position: absolute; top: -12px; right: 18px;
-  font-size: 92px; line-height: 1; color: var(--q, var(--accent)); opacity: .18;
-  pointer-events: none;
-}
 .btn.ghost.on { border-color: var(--accent); color: var(--accent); }
 .toast {
   position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%) translateY(16px);
@@ -130,8 +124,16 @@ html[data-shell="app"] .toast { bottom: 72px; }
   border-top: 18px solid var(--ink);
 }
 .wheel {
+  position: relative; overflow: hidden;
   width: 100%; height: 100%; border-radius: 50%;
   border: 6px solid var(--card);
   box-shadow: var(--shadow);
   transition: transform 3.1s cubic-bezier(0.17, 0.67, 0.16, 0.99);
 }
+.wheel-label {
+  position: absolute; top: 50%; left: 50%; width: 90px; margin-left: -45px;
+  text-align: center; font-size: 11px; font-weight: 800; color: #14120e;
+  text-transform: uppercase; pointer-events: none; transform-origin: 0 0;
+}
+.pop { animation: pop .35s ease; }
+@keyframes pop { from { transform: translateY(8px); opacity: 0; } to { transform: none; opacity: 1; } }
