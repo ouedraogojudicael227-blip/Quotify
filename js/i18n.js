@@ -1,7 +1,7 @@
 window.I18N = {
   fr: {
     brand: "Quotify",
-    tagline: "Une citation, chaque jour.",
+    tagline: "Une citation claire, chaque jour.",
     aujourdhui: "Aujourd'hui",
     explorer: "Explorer",
     favoris: "Favoris",
@@ -10,7 +10,7 @@ window.I18N = {
     copie: "Copié",
     partager: "Partager",
     citationDuJour: "Citation du jour",
-    prochaine: "Prochaine citation à minuit",
+    prochaine: "Nouvelle à minuit",
     chercher: "Chercher",
     searchPh: "Texte, auteur ou thème…",
     tous: "Tous",
@@ -22,11 +22,16 @@ window.I18N = {
     sombre: "Sombre",
     installer: "Installer l'app",
     footer: "Quotify — libre, sans compte. Tes favoris restent sur cet appareil.",
-    offlineOk: "Après une première ouverture, ça marche aussi hors ligne."
+    offlineOk: "Après une première ouverture, ça marche aussi hors ligne.",
+    ajoutee: "Ajoutée aux favoris",
+    retiree: "Retirée des favoris",
+    resultats: "citations",
+    aujourdHuiNote: "Choix fixe jusqu'à minuit, selon ta langue.",
+    decouvre: "Découvrir"
   },
   en: {
     brand: "Quotify",
-    tagline: "One quote, every day.",
+    tagline: "One clear quote, every day.",
     aujourdhui: "Today",
     explorer: "Explore",
     favoris: "Favorites",
@@ -35,7 +40,7 @@ window.I18N = {
     copie: "Copied",
     partager: "Share",
     citationDuJour: "Quote of the day",
-    prochaine: "Next quote at midnight",
+    prochaine: "New one at midnight",
     chercher: "Search",
     searchPh: "Text, author or theme…",
     tous: "All",
@@ -47,6 +52,11 @@ window.I18N = {
     sombre: "Dark",
     installer: "Install app",
     footer: "Quotify — free, no account. Favorites stay on this device.",
-    offlineOk: "After the first visit, it also works offline."
+    offlineOk: "After the first visit, it also works offline.",
+    ajoutee: "Saved to favorites",
+    retiree: "Removed from favorites",
+    resultats: "quotes",
+    aujourdHuiNote: "Fixed until midnight, in your language.",
+    decouvre: "Discover"
   }
 };

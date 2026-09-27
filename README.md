@@ -12,35 +12,23 @@ cd Quotify
 python3 -m http.server 8080
 ```
 
-Ouvre `http://localhost:8080` (site) ou `http://localhost:8080/index.html?shell=app` (vue app).
+Ouvre `http://localhost:8080` ou `http://localhost:8080/index.html?shell=app`.
 
 ## Fonctions
 
-- Citation du jour
-- Explorer par thème et recherche
-- Favoris enregistrés sur l’appareil
+- 60 citations, citation du jour selon la langue
+- Bouton « une autre »
+- Compte à rebours jusqu'à minuit
+- Explorer par thème et recherche instantanée
+- Favoris sans recharger la page
 - Copier / partager
 - Français et anglais
 - Mode clair / sombre
 - Hors-ligne après la première ouverture
 
-## Structure
-
-```
-index.html
-explorer.html
-favoris.html
-css/style.css
-js/app.js
-js/data.js
-js/i18n.js
-manifest.json
-sw.js
-```
-
 ## Contribuer
 
-Lis [CONTRIBUTING.md](CONTRIBUTING.md). Le plus utile : ajouter des citations dans `js/data.js`.
+Lis [CONTRIBUTING.md](CONTRIBUTING.md). Ajoute des citations dans `js/data.js`.
 
 ## Licence
 
