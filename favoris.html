@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Favoris — Quotify</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="manifest" href="manifest.json" />
+</head>
+<body>
+  <div id="header"></div>
+  <main class="wrap">
+    <h1 id="title" style="margin-top:24px"></h1>
+    <div class="grid" id="list"></div>
+  </main>
+  <div id="footer"></div>
+  <script src="js/i18n.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    document.getElementById("header").outerHTML = headerHTML("favoris");
+    document.getElementById("footer").outerHTML = footerHTML();
+    const t = (k) => Quotify.t(k);
+    document.getElementById("title").textContent = t("favoris");
+    const ids = Quotify.favs();
+    const items = QUOTIFY_DATA.quotes.filter((q) => ids.includes(q.id));
+    document.getElementById("list").innerHTML = items.length
+      ? items.map((q) => quoteCard(q)).join("")
+      : `<p class="note">${t("pasFav")}</p>`;
+  </script>
+</body>
+</html>

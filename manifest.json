@@ -1,0 +1,13 @@
+{
+  "name": "Quotify",
+  "short_name": "Quotify",
+  "description": "Une citation inspirante chaque jour",
+  "start_url": "index.html?shell=app",
+  "display": "standalone",
+  "background_color": "#f6f1e8",
+  "theme_color": "#c9842a",
+  "lang": "fr",
+  "icons": [
+    { "src": "img/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}
